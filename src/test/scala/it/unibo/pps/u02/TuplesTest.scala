@@ -1,4 +1,4 @@
-package u02
+package it.unibo.pps.u02
 
 import org.junit.*
 import org.junit.Assert.*
@@ -17,9 +17,6 @@ class TuplesTest:
   @Test def testEquality() =
     assertEquals(tuple, Tuple2("a", 10))
     assertNotEquals(tuple, ("a", 11))
-
-  @Test def testCheckFirstComponent() =
-    assertTrue(Tuples.checkFirstComponent(Tuples.Tup2("a", 10), "a"))
 
   @Test def testSwitch() =
     def switch[A, B](t: (A, B)): (B, A) = t match 

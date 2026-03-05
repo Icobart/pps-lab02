@@ -1,4 +1,4 @@
-package u02;
+package it.unibo.pps.u02;
 
 import java.util.*;
 import java.util.stream.IntStream;
