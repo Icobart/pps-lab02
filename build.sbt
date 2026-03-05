@@ -5,5 +5,5 @@ lazy val root = project
   .settings(
     name := "pps-lab02",
     scalaVersion := scala3Version,
-    libraryDependencies += "com.github.sbt" % "junit-interface" % "0.13.2" % Test
+    libraryDependencies += "com.github.sbt" % "junit-interface" % "0.13.3" % Test
   )
