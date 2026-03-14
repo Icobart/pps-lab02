@@ -96,3 +96,15 @@ object Lab2 extends App:
     _reverse(n, 0)
   println("\n" + "Task 3: 8")
   println(reverseNumber(12345)) // 54321
+
+  // Task 4, svolto da solo
+  enum Expr:
+    case Literal(v: Int)
+    case Add(l: Expr, r: Expr)
+    case Multiply(l: Expr, r: Expr)
+
+  object Expr:
+    def evaluate(expr: Expr): Int = expr match
+      case Literal(v) => v
+      case Add(l, r) => evaluate(l) + evaluate(r)
+      case Multiply(l, r) => evaluate(l) * evaluate(r)
