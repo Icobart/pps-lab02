@@ -114,6 +114,11 @@ object Lab2 extends App:
       case Add(l, r) => s"(${show(l)} + ${show(r)})"
       case Multiply(l, r) => s"(${show(l)} * ${show(r)})"
     }
+  import Expr.*
+  println("\n" + "Task 4")
+  val expr1: Expr = Multiply(Add(Literal(5), Literal(10)), Literal(10))
+  println(show(expr1)) // ((5 + 10) * 10))
+  println(evaluate(expr1)) // 150
 
   // Task 5, svolto da solo
   enum OptionalInt:
@@ -138,3 +143,10 @@ object Lab2 extends App:
       case Just(a) if f(a) => Just(a)
       case _ => Empty()
     }
+  import OptionalInt.*
+  println("\n" + "Task 5")
+  println(mapInt(Just(5))(_ + 1)) // Just(6)
+  println(mapInt(Empty())(_ + 1)) // Empty()
+  println(filter(Just(5))(_ > 2)) // Just(5)
+  println(filter(Just(5))(_ > 8)) // Empty()
+  println(filter(Empty())(_ > 2)) // Empty()
