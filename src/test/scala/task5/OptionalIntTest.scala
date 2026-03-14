@@ -24,9 +24,13 @@ class OptionalIntTest:
 
   /** Task 5: do test for map **/
   @Test def mapIntShouldTransformValueIfPresent(): Unit =
-    val opt = OptionalInt.Just(5)
-    assertEquals(OptionalInt.Just(6), mapInt(opt)(_ + 1))
+    val nonEmpty = OptionalInt.Just(5)
+    assertEquals(OptionalInt.Just(6), mapInt(nonEmpty)(_ + 1))
 
   @Test def mapIntShouldReturnEmptyIfEmpty(): Unit =
-    val opt = OptionalInt.Empty()
-    assertEquals(OptionalInt.Empty(), mapInt(opt)(_ + 1))
+    val empty = OptionalInt.Empty()
+    assertEquals(OptionalInt.Empty(), mapInt(empty)(_ + 1))
+
+  @Test def filterShouldKeepValueIfPredicateSatisfied(): Unit =
+    val nonEmpty = OptionalInt.Just(5)
+    assertEquals(OptionalInt.Just(5), filter(nonEmpty)(_ > 2))

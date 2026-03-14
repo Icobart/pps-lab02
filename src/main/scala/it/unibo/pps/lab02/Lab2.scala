@@ -133,3 +133,7 @@ object Lab2 extends App:
     def mapInt(opt: OptionalInt)(f: Int => Int): OptionalInt = opt match
       case Just(a) => Just(f(a))
       case _ => Empty()
+
+    def filter(opt: OptionalInt)(f: Int => Boolean): OptionalInt = opt match {
+      case Just(a) if f(a) => Just(a)
+    }
