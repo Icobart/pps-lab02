@@ -136,4 +136,5 @@ object Lab2 extends App:
 
     def filter(opt: OptionalInt)(f: Int => Boolean): OptionalInt = opt match {
       case Just(a) if f(a) => Just(a)
+      case _ => Empty()
     }

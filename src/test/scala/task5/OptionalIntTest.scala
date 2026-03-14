@@ -34,3 +34,11 @@ class OptionalIntTest:
   @Test def filterShouldKeepValueIfPredicateSatisfied(): Unit =
     val nonEmpty = OptionalInt.Just(5)
     assertEquals(OptionalInt.Just(5), filter(nonEmpty)(_ > 2))
+
+  @Test def filterShouldReturnEmptyIfPredicateNotSatisfied(): Unit =
+    val nonEmpty = OptionalInt.Just(5)
+    assertEquals(OptionalInt.Empty(), filter(nonEmpty)(_ > 8))
+
+  @Test def filterShouldReturnEmptyIfOptionalEmpty(): Unit =
+    val empty = OptionalInt.Empty()
+    assertEquals(OptionalInt.Empty(), filter(empty)(_ > 2))
