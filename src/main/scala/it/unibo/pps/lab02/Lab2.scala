@@ -114,3 +114,22 @@ object Lab2 extends App:
       case Add(l, r) => s"(${show(l)} + ${show(r)})"
       case Multiply(l, r) => s"(${show(l)} * ${show(r)})"
     }
+
+  // Task 5, svolto da solo
+  enum OptionalInt:
+    case Just(value: Int)
+    case Empty()
+
+  object OptionalInt:
+
+    def isEmpty(opt: OptionalInt): Boolean = opt match
+      case Empty() => true
+      case _ => false
+
+    def orElse(opt: OptionalInt, orElse: Int): Int = opt match
+      case Just(a) => a
+      case _ => orElse
+
+    def mapInt(opt: OptionalInt)(f: Int => Int): OptionalInt = opt match
+      case Just(a) => Just(f(a))
+      case _ => Empty()

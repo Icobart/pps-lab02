@@ -2,7 +2,8 @@ package task5
 
 import org.junit.*
 import org.junit.Assert.*
-import Optionals.*
+import it.unibo.pps.lab02.Lab2.OptionalInt
+import it.unibo.pps.lab02.Lab2.OptionalInt.*
 
 class OptionalIntTest:
   @Test def emptyOptionalShouldBeEmpty(): Unit =
@@ -22,3 +23,10 @@ class OptionalIntTest:
     assertEquals(1, OptionalInt.orElse(empty, 1))
 
   /** Task 5: do test for map **/
+  @Test def mapIntShouldTransformValueIfPresent(): Unit =
+    val opt = OptionalInt.Just(5)
+    assertEquals(OptionalInt.Just(6), mapInt(opt)(_ + 1))
+
+  @Test def mapIntShouldReturnEmptyIfEmpty(): Unit =
+    val opt = OptionalInt.Empty()
+    assertEquals(OptionalInt.Empty(), mapInt(opt)(_ + 1))
