@@ -108,3 +108,9 @@ object Lab2 extends App:
       case Literal(v) => v
       case Add(l, r) => evaluate(l) + evaluate(r)
       case Multiply(l, r) => evaluate(l) * evaluate(r)
+
+    def show(expr: Expr): String = expr match {
+      case Literal(v) => v.toString
+      case Add(l, r) => s"(${show(l)} + ${show(r)})"
+      case Multiply(l, r) => s"(${show(l)} * ${show(r)})"
+    }
