@@ -87,3 +87,12 @@ object Lab2 extends App:
   println("\n" + "Task 3: 7")
   println(power(2, 3)) // 8.0
   println(powerTail(5, 2)) // 25.0
+  // 8
+  def reverseNumber(n: Int): Int =
+    @annotation.tailrec
+    def _reverse(rem: Int, acc: Int): Int = rem match
+      case 0 => acc
+      case r => _reverse(rem / 10, rem % 10 + acc * 10)
+    _reverse(n, 0)
+  println("\n" + "Task 3: 8")
+  println(reverseNumber(12345)) // 54321
