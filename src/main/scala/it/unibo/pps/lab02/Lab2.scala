@@ -70,3 +70,20 @@ object Lab2 extends App:
   def compose(f: Int => Int, g: Int => Int): Int => Int = x => f(g(x))
   println("\n" + "Task 2: 5")
   println(compose(_ - 1, _ * 2)(5)) // 9
+
+  // Task 3, svolto da solo
+  // 7
+  // standard recursion
+  def power(base: Double, exponent: Int): Double = exponent match
+    case 0 => 1.0
+    case n => base * power(base, n - 1)
+  // tail recursion
+  def powerTail(base: Double, exponent: Int): Double =
+    @annotation.tailrec
+    def _power(e: Double, acc: Double): Double = e match
+      case 0 => acc
+      case n => _power(n - 1, acc * base)
+    _power(exponent, 1.0)
+  println("\n" + "Task 3: 7")
+  println(power(2, 3)) // 8.0
+  println(powerTail(5, 2)) // 25.0
