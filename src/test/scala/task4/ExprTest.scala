@@ -44,5 +44,5 @@ class ExprTest:
     val literalAddR = 10
     val literalTestR = 10
     val stringExpected = "((5 + 10) * 10)"
-    val e: Expr = Multiply(Add(Literal(5), Literal(10)), Literal(10))
+    val e: Expr = Multiply(Add(Literal(literalAddL), Literal(literalAddR)), Literal(literalTestR))
     assertEquals(stringExpected, show(e))
