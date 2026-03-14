@@ -27,10 +27,10 @@ object Lab2 extends App:
   println(checkDivideOrMult(8, _ * 5)) // 4000.0
 
   case class Point3D(x: Double, y: Double, z: Double)
-  val p1: Point3D = Point3D(1, 2, 3)
+  val point1: Point3D = Point3D(1, 2, 3)
   def flattenYZ(p: Point3D): Point3D = p match
     case Point3D(x, _, _) => Point3D(x, 0, 0)
-  println(flattenYZ(p1)) // Point3D(1.0, 0.0, 0.0)
+  println(flattenYZ(point1)) // Point3D(1.0, 0.0, 0.0)
 
   // Task 2, svolto da solo
   // 3a
@@ -52,3 +52,21 @@ object Lab2 extends App:
   println(notEmpty("foo")) // true
   println(notEmpty("")) // false
   println(notEmpty("foo") && !notEmpty("")) // true
+  // 4
+  // val, non curried
+  val p1: (Int, Int, Int) => Boolean = (x, y, z) => x <= y && y == z
+  // val, curried
+  val p2: Int => Int => Int => Boolean = x => y => z => x <= y && y == z
+  // def, non curried
+  def p3(x: Int, y: Int, z: Int): Boolean = x <= y && y == z
+  // def, curried
+  def p4(x: Int)(y: Int)(z: Int): Boolean = x <= y && y == z
+  println("\n"+"Task 2: 4")
+  println(p1(1, 2, 2)) // true
+  println(p2(1)(2)(2)) // true
+  println(p3(1, 2, 2)) // true
+  println(p4(1)(2)(3)) // false
+  // 5
+  def compose(f: Int => Int, g: Int => Int): Int => Int = x => f(g(x))
+  println("\n" + "Task 2: 5")
+  println(compose(_ - 1, _ * 2)(5)) // 9
