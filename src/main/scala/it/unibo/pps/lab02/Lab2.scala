@@ -31,3 +31,15 @@ object Lab2 extends App:
   def flattenYZ(p: Point3D): Point3D = p match
     case Point3D(x, _, _) => Point3D(x, 0, 0)
   println(flattenYZ(p1)) // Point3D(1.0, 0.0, 0.0)
+
+  // Task 2, svolto da solo
+  val positiveVal: Int => String = _ match
+    case x if x > 0 => "positive"
+    case _ => "negative"
+  println(positiveVal(10)) // positive
+  println(positiveVal(-5)) // negative
+  def positiveDef(x: Int): String = x match
+    case n if n > 0 => "positive"
+    case _ => "negative"
+  println(positiveDef(10)) // positive
+  println(positiveDef(-5)) // negative
