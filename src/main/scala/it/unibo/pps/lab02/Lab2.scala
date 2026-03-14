@@ -33,6 +33,7 @@ object Lab2 extends App:
   println(flattenYZ(p1)) // Point3D(1.0, 0.0, 0.0)
 
   // Task 2, svolto da solo
+  // 3a
   val positiveVal: Int => String = _ match
     case x if x > 0 => "positive"
     case _ => "negative"
@@ -43,3 +44,11 @@ object Lab2 extends App:
     case _ => "negative"
   println(positiveDef(10)) // positive
   println(positiveDef(-5)) // negative
+  // 3b
+  val negVal: (String => Boolean) => (String => Boolean) = f => !f(_)
+  def negDef(f: String => Boolean): String => Boolean = !f(_)
+  val empty: String => Boolean = _ == "" // predicate on strings
+  val notEmpty = negDef(empty) // String => Boolean
+  println(notEmpty("foo")) // true
+  println(notEmpty("")) // false
+  println(notEmpty("foo") && !notEmpty("")) // true
