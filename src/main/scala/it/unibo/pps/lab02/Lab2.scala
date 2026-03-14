@@ -13,3 +13,15 @@ object Lab2 extends App:
   println(divideTenBy(5)) //2.0
   println(divideTenBy(2)) //5.0
   println(divideTenBy(0)) //infinity
+
+  def applyTwice(f: Int => Int, x: Int): Int = f(f(x))
+  println(applyTwice(_ + 1, 10)) //12
+  println(applyTwice(_ * 5, 10)) //250
+
+  val divideHundred: (Double, Double => Double) => Double = (y, g) => g(y)
+  val multHundred: (Double, Double => Double) => Double = (z, h) => h(z)
+  def checkDivideOrMult(x: Double, f: Double => Double): Double = f(x) match
+    case n if n >= 100 => divideHundred(n, _ / 100)
+    case n => multHundred(n, _ * 100)
+  println(checkDivideOrMult(40, _ * 20)) //8.0
+  println(checkDivideOrMult(8, _ * 5)) //4000.0
