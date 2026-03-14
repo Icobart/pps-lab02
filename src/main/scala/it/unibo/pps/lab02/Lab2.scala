@@ -12,3 +12,4 @@ object Lab2 extends App:
   val divideTenBy: Double => Double = divideCurried(10)
   println(divideTenBy(5)) //2.0
   println(divideTenBy(2)) //5.0
+  println(divideTenBy(0)) //infinity
